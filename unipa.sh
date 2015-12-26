@@ -23,8 +23,10 @@ function unity()
     find . -name "*.shader" -print -exec mv {} ../_SHADER/ \;
     find . -name "*.ttf" -print -exec mv {} ../_TTF/ \;
     find . -name "*.TTF" -print -exec mv {} ../_TTF/ \;
-
+    echo "unity done"
+    cd ..
   fi
+
 }
 
 function unipa()
@@ -40,9 +42,9 @@ function unipa()
   rm -rf _CodeSignature
   rm -rf *.lproj
   rm -rf zh*
-  unity
+  unity "$1"
   cd ..
-  rm "$1"
+  rm -rf "$1"
 }
 
 unipa "$1"
