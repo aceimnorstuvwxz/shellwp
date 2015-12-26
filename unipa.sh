@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#ipa解压并 extract 脚本，如果是 unity工程，还会尝试disunity 并分类整理。
+
 function unity()
 {
   if [ -d "Data" ]; then
@@ -28,9 +30,9 @@ function unity()
 function unipa()
 {
   echo $1
-  mkdir $1.dir
-  unzip $1 -d $1.dir
-  cd $1.dir
+  mkdir "$1.dir"
+  unzip "$1" -d "$1.dir"
+  cd "$1.dir"
   mv Payload/*/*  ./
   rm -ff iTunes*
   rm -rf META-INF
@@ -40,7 +42,7 @@ function unipa()
   rm -rf zh*
   unity
   cd ..
+  rm "$1"
 }
 
-unipa "a.ipa"
-unipa "b.ipa"
+unipa "$1"
